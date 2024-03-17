@@ -1,31 +1,32 @@
 *** Settings ***
 Library     SeleniumLibrary
+Resource    SauceLabsResources.robot
 *** Test Cases ***
 Go to SauceLabs site
-    Open Browser    https://www.saucedemo.com/
+    Open Browser                        ${SauceLabsURL}
 Input username
-    Input Text      id=user-name    standard_user
+    Input Text      ${UsernameField}    ${SauceLabsUser}
 Input password
-    Input Text      id=password    secret_sauce
+    Input Text      ${PasswordField}    ${SauceLabsPassword}
 Click login button
-    Click Button    id=login-button
+    Click Button                        ${LoginButton}
 Pick item
-    Click Element   id=add-to-cart-sauce-labs-backpack
+    Click Element                       ${backpack}
 Click Cart
-    Click Element   (//a[@class='shopping_cart_link'])[1]
+    Click Element                       ${ShoppingCart}
 Validate price
-    Page Should Contain    29.99
+    Page Should Contain                 29.99
 Click Checkout
-    Click Element   id=checkout
+    Click Element                       ${Checkout}
 Enter first name at checkout
-    Input Text      id=first-name    Justin
+    Input Text      ${FirstNameField}   Justin
 Enter last name at checkout
-    Input Text      id=last-name    Time
+    Input Text      ${LastNameField}    Time
 Enter postal code infomation
-    Input Text      id=postal-code    43011
+    Input Text      ${PostalCode}       43011
 Click continue button
-    Click Button    id=continue
+    Click Button    ${Continue}
 Click finish button
-    Click Button    id=finish
+    Click Button    ${Finish}
     Close All Browsers
 
